@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
+    "bcrypt": "^3.0.5",
+    "classnames": "^2.2.6",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "include-media": "^1.4.9",
+    "isomorphic-unfetch": "^3.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "next": "^8.0.3",
+    "node-sass": "^4.11.0",
+    "nookies": "^2.0.4",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.9.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-moment": "^0.8.4"
+  },
+  "scripts": {
+    "dev": "nodemon server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}

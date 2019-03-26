@@ -1,0 +1,10 @@
+@import './include-media.scss';
+
+.ids-vyas-puja {
+    @include media(">tablet") {
+        width: 600px;
+    }
+
+    margin: 0 auto;
+    width: 80%;
+}

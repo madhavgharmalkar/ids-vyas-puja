@@ -1,0 +1,20 @@
+.ids-error {
+    color: white;
+    text-align: center;
+
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .status-code {
+        font-size: 96px;
+        font-weight: 600;
+    }
+
+    .status-description {
+        font-size: 24px;
+        margin-bottom: 70px;
+    }
+}
