@@ -34,9 +34,23 @@ async function findUserById(id) {
     }
 }
 
+async function findOrCreateUser(email, name) {
+    const query_string = `
+        insert into user_data ("email", "name")
+        values ($1, $2)
+        on conflict (email)
+        do update set email = excluded.email 
+        returning user_id, name, email; 
+    `
+
+    const res = await db.query(query_string, [email, name])
+    return res.rows[0]
+}
+
 
 module.exports = {
     createUser,
     findUser,
-    findUserById
+    findUserById,
+    findOrCreateUser
 }

@@ -1,5 +1,6 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 
 const passportJWT = require("passport-jwt");
 const JWTStrategy   = passportJWT.Strategy;
@@ -42,3 +43,14 @@ passport.use(new JWTStrategy({
             })
     }
 ));
+
+passport.use(new FacebookStrategy({
+        clientID: process.env.FACEBOOK_CLIENT_ID,
+        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL: '/api/login/facebook/return',
+        profileFields: ['id', 'emails', 'displayName']
+    },
+    function(accessToken, refreshToken, profile, cb) {
+        return cb(null, profile);
+    }
+))

@@ -1,7 +1,9 @@
 import React from 'react'
-import '../styles/header.scss'
+import { parseCookies } from 'nookies'
 
 import ActiveLink from '../components/activeLink'
+
+import '../styles/header.scss'
 
 const HeaderItem = (props) => (
     <ActiveLink href={props.href} className='header-item'>
@@ -12,7 +14,8 @@ const HeaderItem = (props) => (
 )
 
 const Header = (props) => {
-    const loggedIn = !!props.userData
+    const { token } = parseCookies()
+    const loggedIn = !!token
 
     const loggedInTabs = () => (
         <HeaderItem href='/myoffering'>My Offering</HeaderItem>

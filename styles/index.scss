@@ -8,10 +8,10 @@
     align-items: center;
 
     width: 100%;
+    color: white;
 
     .welcome {
         font-size: 24px;
-        color: white;
     }
 
     .feed {
@@ -20,15 +20,6 @@
 
         .offering {
             margin-top: 20px;
-
-            padding: 15px 25px;
-            color: white;
-
-            border: 3px solid white;
-            border-radius: 5px;
-
-            transition: background-color .5s ease;
-
             .name {
                 font-weight: bold;
             }
@@ -36,6 +27,21 @@
             &-text {
                 margin-top: 15px;
             }
+
+            &-text {
+                padding: 15px 25px;
+            
+                color: white;
+    
+                border: 3px solid white;
+                border-radius: 5px;
+            }
+
+            p {
+                margin: 0;
+            }
+
+
 
             .actions-row {
                 display: flex;

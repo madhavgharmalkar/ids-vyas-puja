@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import moment from 'moment'
 
-import Header from '../components/header'
 import idsFetch from '../components/helpers/idsFetch.js';
 
 import '../styles/index.scss'
@@ -52,10 +51,14 @@ class Feed extends Component {
                 <div className="feed">
                     {this.state.offerings.map((value, index) => (
                         <div key={value.offering_id} className="offering">
-                            <div className="name">{`${moment.utc(value.createdat).local().calendar()}, ${value.name} wrote`}</div>
-                            <div className="offering-text">{value.offering}</div>
-                            <div className="actions-row">
-                                <div className="action" onClick={() => {this.likePost(value.offering_id, !value.liked)}}>{value.liked ? 'Unlike' : 'Like'}</div>
+                            <div className="name">{`${moment.utc(value.created_at).local().calendar()}, ${value.name} wrote`}</div>
+                            <div className="offering-text">
+                                {value.offering.split('\n').map((value, index) => (
+                                    <p key={index}>{value || <br></br>}</p>
+                                ))}
+                                <div className="actions-row">
+                                    <div className="action" onClick={() => {this.likePost(value.offering_id, !value.liked)}}>{value.liked ? 'Unlike' : 'Like'}</div>
+                                </div>
                             </div>
                         </div>
                     ))}

@@ -13,16 +13,28 @@ async function getOfferings(userId) {
     return res.rows
 }
 
+async function getUserOffering(userId) {
+    const queryString = `
+        SELECT *
+        FROM offerings
+        WHERE user_id = $1;
+    `
+    
+    const res = await db.query(queryString, [userId])
+    return res
+}
+
 async function updateInsertOffering(userId, offering) {
     const queryString = `
         INSERT INTO offerings (user_id, offering)
         VALUES ($1, $2)
         ON CONFLICT (user_id)
         DO UPDATE SET offering = EXCLUDED.offering
+        RETURNING *;
     `
 
     const res = await db.query(queryString, [userId, offering])
-    return res.rows
+    return res.rows[0]
 }
 
 async function likeOffering(userId, offeringId) {
@@ -50,5 +62,7 @@ async function unlikeOffering(userId, offeringId) {
 module.exports = {
     getOfferings,
     likeOffering,
-    unlikeOffering
+    unlikeOffering,
+    updateInsertOffering,
+    getUserOffering
 }

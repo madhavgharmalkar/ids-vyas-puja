@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Router from 'next/router'
 
-import { setCookie, destroyCookie } from 'nookies'
+import {destroyCookie } from 'nookies'
 
 import idsFetch from '../components/helpers/idsFetch.js';
 
@@ -21,6 +21,7 @@ class Login extends Component {
         this.handleEmailChange = this.handleEmailChange.bind(this)
         this.handlePasswordChange = this.handlePasswordChange.bind(this)
         this.loginUser = this.loginUser.bind(this)
+        this.redirectToRegister = this.redirectToRegister.bind(this)
     }
 
     handleEmailChange(event) {
@@ -35,11 +36,13 @@ class Login extends Component {
         idsFetch(null, '/api/login', 'POST', {
             email: this.state.email,
             password: this.state.password
-        }).then(data => {
-            setCookie({}, 'token', data.token)
+        }).then((data) => {
             Router.push('/')
         })
+    }
 
+    redirectToRegister() {
+        Router.push('/api/login/facebook')
     }
 
     render() {
@@ -51,17 +54,21 @@ class Login extends Component {
                     <form className="login-form">
                         <div className="login-form-group">
                             <label>Email</label>
-                            <input autocomplete="username" onChange={this.handleEmailChange} type="text"/>
+                            <input autoComplete="username" onChange={this.handleEmailChange} type="text"/>
                         </div>
                         <div className="login-form-group">
                             <label>Password</label>
-                            <input autocomplete="current-password" onChange={this.handlePasswordChange} type="password"/>
+                            <input autoComplete="current-password" onChange={this.handlePasswordChange} type="password"/>
                         </div>
 
                         <div className="login-btn" onClick={this.loginUser}>
                             Login
                         </div>
                     </form>
+                </div>
+            
+                <div className="no-account" onClick={this.redirectToRegister}>
+                    Sign in with Facebook
                 </div>
             </div>
         )

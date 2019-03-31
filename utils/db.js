@@ -23,7 +23,8 @@ async function initialize_database(pool) {
             user_id uuid DEFAULT uuid_generate_v4(),
             name VARCHAR NOT NULL,
             email VARCHAR NOT NULL,
-            password VARCHAR NOT NULL,
+            password VARCHAR,
+            UNIQUE (user_id, email),
             PRIMARY KEY (email)
         );
     `)
@@ -35,8 +36,9 @@ async function initialize_database(pool) {
             offering VARCHAR NOT NULL,
             private BOOLEAN NOT NULL DEFAULT FALSE,
             anon BOOLEAN NOT NULL DEFAULT FALSE,
-            created_at timestamp without time zone default (now() at time zone 'utc'),
-            PRIMARY KEY (offering_id, user_id)
+            created_at timestamptz default now(),
+            UNIQUE (offering_id, user_id),
+            PRIMARY KEY (user_id)
         );
     `)
 
@@ -44,6 +46,7 @@ async function initialize_database(pool) {
         CREATE TABLE IF NOT EXISTS offering_likes (
             user_id uuid,
             offering_id uuid,
+            UNIQUE (user_id, offering_id),
             PRIMARY KEY (user_id, offering_id)
         );
     `)
