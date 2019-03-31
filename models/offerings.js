@@ -2,10 +2,12 @@ const db = require('../utils/db')
 
 async function getOfferings(userId) {
     const queryString = `
-        SELECT name, created_at, offering, offerings.offering_id, coalesce(offering_likes.user_id = $1, false) liked
+        SELECT name, created_at, offering, offerings.offering_id, coalesce(likes.user_id = $1, false) liked
         FROM offerings
-        LEFT JOIN offering_likes
-        ON (offerings.offering_id = offering_likes.offering_id)
+        LEFT JOIN (
+            SELECT * FROM offering_likes WHERE user_id = $1
+        ) as likes
+        ON (offerings.offering_id = likes.offering_id)
         INNER JOIN user_data
         ON (offerings.user_id = user_data.user_id)
     `
