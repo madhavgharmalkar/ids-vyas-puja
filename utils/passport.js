@@ -47,7 +47,7 @@ passport.use(new JWTStrategy({
 passport.use(new FacebookStrategy({
         clientID: process.env.FACEBOOK_CLIENT_ID,
         clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL: '/api/login/facebook/return',
+        callbackURL: `${process.env.APP_URL}/api/login/facebook/return`,
         profileFields: ['id', 'emails', 'displayName']
     },
     function(accessToken, refreshToken, profile, cb) {
