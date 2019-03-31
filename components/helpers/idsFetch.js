@@ -26,10 +26,10 @@ const idsFetch = (context, url, method = 'GET', data) => {
                     Location: '/login'
                 })
                 context.res.end()
-                return
+                return {}
             } else {
                 Router.push('/login')
-                return
+                return {}
             }
         }
         return response.json()
