@@ -1,56 +1,43 @@
-@import './include-media.scss';
+@import './variables.scss';
 
 .ids-offerings {
-    margin-top: 50px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    width: 100%;
-    color: white;
-
     .welcome {
-        font-size: 24px;
+        text-align: center;
     }
 
     .feed {
-        width: 100%;
-        min-height: 150px;
-
         .offering {
             margin-top: 20px;
-            .name {
-                font-weight: bold;
-            }
 
-            &-text {
+            @include ids-gradient-bg;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;  /* <- here it is */
+
+            padding: 15px;
+            border-radius: 3px;
+
+            .offering-text {
+                background: $background-color;
                 margin-top: 15px;
+
+                padding: 10px;
+
+                p {
+                    margin: 0;
+                }
             }
-
-            &-text {
-                padding: 15px 25px;
-            
-                color: white;
-    
-                border: 3px solid white;
-                border-radius: 5px;
-            }
-
-            p {
-                margin: 0;
-            }
-
-
 
             .actions-row {
                 display: flex;
                 justify-content: flex-end;
-                cursor: pointer;
+                align-items: center;
 
-                text-align: right;
+                margin-top: 20px;
 
                 .action {
+                    cursor: pointer;
+
                     &:hover {
                         text-decoration: underline;
                     }

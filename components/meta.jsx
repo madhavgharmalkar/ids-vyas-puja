@@ -9,15 +9,14 @@ export default (props) => (
         </Head>
         <style jsx global>{`
             html {
-                height: 100%;
+                @import url('https://fonts.googleapis.com/css?family=Karla');
+                font-family: 'Karla', sans-serif;
             }
+
             body {
                 margin: 0;
-                background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
-                background-repeat: no-repeat;
-                @import url('https://fonts.googleapis.com/css?family=Karla');
-
-                font-family: 'Karla', sans-serif;
+                background-color: #f5f6fa;
+                color: #2f3640;
             }
         `}</style>
         <Header userData={props.userData}></Header>

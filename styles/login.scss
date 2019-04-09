@@ -1,106 +1,44 @@
-@import './include-media.scss';
+@import './variables.scss';
 
 .ids-login {
-    margin-top: 50px;
-    width: 100%;
 
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 
-    color: white;
-
-    .login-container {
-        padding: 25px 0px;
-        min-height: 100px;
-
-        @include media(">tablet") {
-            width: 60%;
-        }
-
-        width: 100%;
-
-        border: 3px solid white;
-        border-radius: 5px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    
-        transition: border-radius .5s ease;
-
-        &:focus-within {
-            border-radius: 20px;
-        }
-
-        .label {
-            font-size: 32px;
-        }
-
-        .login-form {
-            width: 80%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            &-group {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-                width: 100%;
-                margin-top: 25px;
-
-                label {
-                    font-size: 24px;
-                    align-self: flex-start;
-                    margin-bottom: 8px;
-                }
-
-                input {
-                    background-color: white;
-                    border: none;
-                    height: 40px;
-                    width: 100%;
-                    font-size: 18px;
-                    padding: 0 5px;
-
-                    border-radius: 2px;
-
-                    &:focus {
-                            outline: 5px solid orange;
-                    }
-                }
-            }
-
-            .login-btn {
-                margin-top: 30px;
-                padding: 5px 15px;
-
-                font-size: 24px;
-                font-weight: bold;
-
-                cursor: pointer;
-                border: 3px solid white;
-
-                transition: all .25s ease;
-
-                &:hover {
-                    border-radius: 10px;
-                    background-color: rgba($color: white, $alpha: .1)
-                }
-            }
-        }
-    }
-
-    .no-account {
-        margin-top: 20px;
+    .social-login {
         cursor: pointer;
 
-        &:hover {
-            text-decoration: underline;
+        @include ids-gradient-transparent-bg;
+        padding: 2px;
+
+        font-size: 18px;
+        border-radius: 15px;
+
+        max-width: 100%;
+
+        margin-top: 20px;
+
+        .social-login-box {
+            background-color: $background-color;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 10px 20px;
+            border-radius: 15px;
+
+            transition: background .3s ease;
+
+            &:hover {
+                background: transparent;
+            }
+        }
+
+        .social-icon {
+            margin-right: 15px;
         }
     }
-
 }

@@ -1,0 +1,10 @@
+@import './variables.scss';
+
+.ids-line { 
+    width: 75%;
+
+    margin: 10px auto;
+    height: 1px;
+    background: black;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(white), to(white), color-stop(50%, $text-color));
+}

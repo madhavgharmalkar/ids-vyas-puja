@@ -1,0 +1,20 @@
+$text-color: #2f3640;
+$background-color: #f5f6fa;
+
+$primary-color: #faaca8;
+$secondary-color: #ddd6f3;
+
+$ids-gradient: linear-gradient(to top right, #bfe9ff, #ff6e7f); 
+
+@mixin ids-gradient-bg {
+    background: #ff6e7f;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top right, #bfe9ff, #ff6e7f);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top right, #bfe9ff, #ff6e7f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+@mixin ids-gradient-transparent-bg {
+    background: #ff6e7f;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top right, #bfe9ff, rgba(255, 110, 127, .10) 90%);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top right, #bfe9ff, rgba(255, 110, 127, .10) 90%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+

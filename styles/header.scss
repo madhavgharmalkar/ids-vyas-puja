@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 header {
     width: 100%; 
     height: 70px;
@@ -8,15 +10,13 @@ header {
 
     font-size: 18px;
 
-
     .header-item {
-        color: white;
         text-decoration: none;
         
         margin-right: 15px;
+        color: $text-color;
 
         &.active {
-            outline: 3px solid white;
             border-radius: 10px;
         }
 

@@ -14,15 +14,27 @@ const HeaderItem = (props) => (
 )
 
 const Header = (props) => {
+    console.log('header called')
     const { token } = parseCookies()
     const loggedIn = !!token
 
-    return (
+    const loggedInNav = () => (
         <header>
             <HeaderItem href='/'>Home</HeaderItem>
             <HeaderItem href='/myoffering'>My Offering</HeaderItem>
-            <HeaderItem href='/login'>{ loggedIn ? 'Logout' : 'Login' }</HeaderItem>
+            <HeaderItem href='/logout'>Logout</HeaderItem>
         </header>
+    )
+
+    const loggedOutNav = () => {
+        <header>
+        </header>     
+    }
+
+    return (
+        <div>
+            {loggedIn ? loggedInNav() : loggedOutNav()}
+        </div>
     )
 }
 

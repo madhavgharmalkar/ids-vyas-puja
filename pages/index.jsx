@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import moment from 'moment'
 
+import IdsLine from '../components/ids-line.jsx' 
+
 import idsFetch from '../components/helpers/idsFetch.js';
 
 import '../styles/index.scss'
@@ -47,7 +49,8 @@ class Feed extends Component {
     render() {
         return (
             <div className="ids-offerings">
-                <div className="welcome">{`Welcome ${this.props.userData.name}!`}</div>
+                <h1 className="welcome">{`Welcome ${this.props.userData.name}!`}</h1>
+                <IdsLine></IdsLine>
                 <div className="feed">
                     {this.state.offerings.map((value, index) => (
                         <div key={value.offering_id} className="offering">
@@ -56,9 +59,9 @@ class Feed extends Component {
                                 {value.offering.split('\n').map((value, index) => (
                                     <p key={index}>{value || <br></br>}</p>
                                 ))}
-                                <div className="actions-row">
-                                    <div className="action" onClick={() => {this.likePost(value.offering_id, !value.liked)}}>{value.liked ? 'Unlike' : 'Like'}</div>
-                                </div>
+                            </div>
+                            <div className="actions-row">
+                                <div className="action" onClick={() => {this.likePost(value.offering_id, !value.liked)}}>{value.liked ? 'Unlike' : 'Like'}</div>
                             </div>
                         </div>
                     ))}
