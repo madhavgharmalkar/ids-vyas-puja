@@ -38,4 +38,19 @@ router.get('/facebook/return',
     }
 )
 
+router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+router.get('/google/return', 
+    passport.authenticate('google', { failureRedirect: '/login', session: false }),
+    (req, res) => {
+        console.log(req.user)
+        const name = req.user.displayName
+        const email = req.user.emails[0].value
+        userModel.findOrCreateUser(email, name).then((data) => {
+            const token = jwt.sign(data, 'your_jwt_secret')
+            res.cookie('token', token); 
+            return res.redirect('/')
+        })
+    }
+)
+
 module.exports = router;

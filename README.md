@@ -1,1 +1,1 @@
-# ids-vyas-puja
+# ids-vyasa-puja

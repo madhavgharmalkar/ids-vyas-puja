@@ -1,11 +1,13 @@
 import Meta from './meta'
+import Header from './header'
 
 import '../styles/layout.scss'
 
 export default (props) => (
     <div>
-        <Meta userData={props.userData}></Meta>
-        <div className="ids-vyas-puja">
+        <Meta></Meta>
+        <Header userData={props.userData}></Header>
+        <div className="ids-vyasa-puja">
             {props.children}
         </div>
     </div>

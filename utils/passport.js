@@ -1,6 +1,7 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const passportJWT = require("passport-jwt");
 const JWTStrategy   = passportJWT.Strategy;
@@ -52,5 +53,15 @@ passport.use(new FacebookStrategy({
     },
     function(accessToken, refreshToken, profile, cb) {
         return cb(null, profile);
+    }
+))
+
+passport.use(new GoogleStrategy({
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: `${process.env.APP_URL}/api/login/google/return`,
+    },
+    function(accessToken, refreshToken, profile, cb) {
+        return cb(null, profile)
     }
 ))

@@ -1,27 +1,58 @@
 @import './variables.scss';
 
 header {
-    width: 100%; 
-    height: 70px;
 
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    font-size: 24px;
+    text-align: right;
+    color: $text-color;
+    background-color: $background-color;
 
-    font-size: 18px;
+    transition: none;
 
-    .header-item {
-        text-decoration: none;
-        
-        margin-right: 15px;
-        color: $text-color;
+    .ids-header {
+        max-width: 40rem;
+        padding: 1.5rem;
+        margin: auto;
 
-        &.active {
-            border-radius: 10px;
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+
+        .bars {
+            align-self: flex-end;
+            cursor: pointer;
         }
 
-        .wrapper {
-            padding: 5px 15px;
-        }        
+        .links {
+            display: flex;
+            flex-direction: column;
+
+            .header-item {
+                padding: .25em 0px;
+
+                a {
+                    text-decoration: none;
+                    color: $background-color;
+                }
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+
+
+
+    &.open {
+        background-color: $text-color;
+        color: $background-color;
+
+        transition: all .2s ease-in;
+
+        .header-item {
+            color: $background-color;
+        }
     }
 }

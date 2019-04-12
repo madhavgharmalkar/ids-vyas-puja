@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import moment from 'moment'
+import Head from 'next/head'
 
 import IdsLine from '../components/ids-line.jsx' 
 
@@ -49,6 +50,9 @@ class Feed extends Component {
     render() {
         return (
             <div className="ids-offerings">
+                <Head>
+                    <title>IDS Vyasa Puja | Welcome</title>
+                </Head>
                 <h1 className="welcome">{`Welcome ${this.props.userData.name}!`}</h1>
                 <IdsLine></IdsLine>
                 <div className="feed">

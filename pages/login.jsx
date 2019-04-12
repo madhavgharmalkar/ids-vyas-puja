@@ -14,18 +14,22 @@ class Login extends Component {
         super(props)
 
         this.redirectToFBLogin = this.redirectToFBLogin.bind(this)
+        this.redirectToGoogleLogin = this.redirectToGoogleLogin.bind(this)
     }
 
     redirectToFBLogin() {
-        console.log('login with fb called')
         Router.push('/api/login/facebook')
+    }
+
+    redirectToGoogleLogin() {
+        Router.push('/api/login/google')
     }
 
     render() {
         return (
             <div className="ids-login">
                 <Head>
-                    <title>IDS Vyas Puja | Login</title>
+                    <title>IDS Vyasa Puja | Login</title>
                 </Head>
                 <h1>Login</h1>
                 <IdsLine></IdsLine>
@@ -36,7 +40,7 @@ class Login extends Component {
                     </div>
                 </div>
 
-                <div className="social-login" onClick={this.redirectToFBLogin}>
+                <div className="social-login" onClick={this.redirectToGoogleLogin}>
                     <div className="social-login-box">
                         <FontAwesomeIcon className="social-icon" icon={faGoogle}/>
                         <div>Sign in with Google</div>
