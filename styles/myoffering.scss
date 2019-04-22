@@ -1,33 +1,44 @@
+@import './variables.scss';
+
 .ids-my-offering {
-    width: 100%;
-
-    margin-top: 50px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    .title {
-        font-size: 24px;
-    }
+    .offering-container {
+        @include ids-gradient-bg;
 
-    .offering {
-        margin-top: 25px;
+        box-sizing: border-box;
+        border-radius: 5px;
+
+        margin-top: 20px;
         width: 100%;
         height: 300px;
+        padding: 3px;
+
+        .offering {
+            box-sizing: border-box;
+            background: $background-color;
+
+            width: 100%;
+            height: 100%;
+        }
 
         textarea {
-            padding: 0;
+            box-sizing: border-box;
             border: none;
-            width: calc(100% - 38px);
-            height: calc(100% - 38px);
+
+            background-color: $background-color;
+            
+            margin: 0;
+            padding: 0;
+
+            width: 100%;
+            height: 100%;
 
             font-size: 18px;
             padding: 15px;
-            
-            border-radius: 3px;
 
-            background-color: transparent;
 
             font-weight: 500;
             resize: none;
@@ -36,13 +47,6 @@
 
     .submit {
         cursor: pointer;
-
-        border-radius: 5px;
-
-        font-size: 16px;
-        font-weight: bold;
-
         margin-top: 25px;
-        padding: 6px 15px;
     }
 }

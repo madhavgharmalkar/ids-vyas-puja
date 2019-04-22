@@ -1,0 +1,17 @@
+@import './variables.scss';
+
+.ids-button {
+    @include ids-gradient-bg;
+    font-size: 18px;
+
+    padding: 2px;
+    border-radius: 15px;
+    font-weight: 600;
+
+    .ids-button-inside {
+        border-radius: 15px;
+        background: $background-color;
+        padding: 10px 20px;
+    }
+
+}

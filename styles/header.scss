@@ -7,8 +7,6 @@ header {
     color: $text-color;
     background-color: $background-color;
 
-    transition: none;
-
     .ids-header {
         max-width: 40rem;
         padding: 1.5rem;
@@ -46,10 +44,13 @@ header {
 
 
     &.open {
-        background-color: $text-color;
-        color: $background-color;
+        
+        @include ids-gradient-bg;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
 
-        transition: all .2s ease-in;
+        color: $background-color;
 
         .header-item {
             color: $background-color;

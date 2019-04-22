@@ -14,7 +14,7 @@ passport.use(new LocalStrategy({
         passwordField: 'password'
     },
     function (email, password, cb) {
-        return userModel.findUser(email, password)
+        return userModel.findOne({ where: {}})
             .then(user => {
                 if (!user) {
                     return cb(null, false, {message: 'Incorrect email or password'})
@@ -32,12 +32,10 @@ passport.use(new JWTStrategy({
         secretOrKey: 'your_jwt_secret'
     },
     function(jwtPayload, cb) {
-        return userModel.findUserById(jwtPayload.user_id)
+        return userModel.findOne({where: {id: jwtPayload.id}})
             .then(user => {
-                if (!user) {
-                    return(null, null)
-                }
-                return cb(null, user)
+                userData = user.get()
+                return cb(null, userData)
             })
             .catch(err => {
                 return cb(err)

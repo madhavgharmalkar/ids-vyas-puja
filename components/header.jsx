@@ -33,6 +33,7 @@ const Header = (props) => {
                     <div className="links">
                         <div onClick={() => toggleNav(false)}><HeaderItem href='/'>Home</HeaderItem></div>
                         <div onClick={() => toggleNav(false)}><HeaderItem href='/myoffering'>My Offering</HeaderItem></div>
+                        {/* <div onClick={() => toggleNav(false)}><HeaderItem href='/profile'>Profile</HeaderItem></div> */}
                         <div onClick={() => toggleNav(false)}><HeaderItem href='/logout'>Logout</HeaderItem></div>
                     </div>
                 }

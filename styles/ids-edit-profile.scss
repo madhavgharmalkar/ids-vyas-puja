@@ -1,0 +1,53 @@
+.ids-edit-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .ids-box {
+        margin-top: .5em;
+    }
+
+    .ids-box-content {
+        padding: 1em 2em;
+
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        grid-column-gap: 1em;
+        grid-row-gap: 1em;
+
+        align-items: center;
+    }
+
+    .ids-submit {
+        margin-top: 25px;
+        width: 25%;
+
+        background-color: transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+        outline:none;
+    }
+
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        label {
+            text-align: right;
+        }
+
+        input {
+            font-size: .8em;
+            width: 60%;
+        }
+
+        select {
+            font-size: .8em;
+            width: 60%;
+        }
+    }
+}

@@ -1,51 +1,75 @@
 const express = require('express')
-
 const router = express.Router()
-const passport = require('passport')
 
-const offeringsModule = require('../models/offerings')
+const passport = require('passport')
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op 
+
+const offeringsModel = require('../models/offering')
+const userModel = require('../models/user')
 
 router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
-    offeringsModule.getOfferings(req.user.user_id)
-        .then((rows) => {
-            res.json(rows)
-        })
-        .catch((err) => {
-            res.sendStatus(500)
-        })
+    const {
+        limit = 10,
+        offset = 0,  
+    } = req.query
+
+    const currentTime = req.query.now ? new Date(parseInt(req.query.now)) : new Date()
+
+    offeringsModel.findAll({
+        limit,
+        offset: parseInt(offset),
+        order: [['createdAt', 'DESC']],
+        attributes: ['createdAt', 'offering', 'id'],
+        include: [{
+            model: userModel,
+            attributes: ['name']
+        }],
+        where: {
+            createdAt: {
+                [Op.lte]: currentTime
+            }
+        }
+    }).then((offerings) => {
+        res.json(offerings)
+
+    })
+    .catch((err) => {
+        console.log(err)
+        res.sendStatus(500)
+    })
 })
 
 router.post('/myoffering', passport.authenticate('jwt', {session: false}), (req, res) => {
     const { offering } = req.body
-    const { user_id } = req.user
+    const { id } = req.user
+    console.log(id)
 
-    offeringsModule.updateInsertOffering(user_id, offering)
-        .then((data) => {
-            res.json(data)
-        })
-        .catch((err) => {
-            console.log(err)
-            res.sendStatus(500)
-        })
+    offeringsModel.update({
+            offering: offering
+        },
+        {
+            where: {
+                userId: id
+            }
+        }
+    ).then((offering) => res.json(offering))
 })
 
 router.get('/myoffering', passport.authenticate('jwt', {session: false}), (req, res) => {
-    const { user_id } = req.user
+    const { id } = req.user
+    console.log(id)
 
-    offeringsModule.getUserOffering(user_id)
-        .then((data) => {
-            if (data.rowCount) {
-                res.json(data.rows[0])
-            } else {
-                res.json({
-                    offering: ""
-                })
-            }
-        })
-        .catch((err) =>  {
-            console.log(err)
-            res.sendStatus(500)
-        })
+    offeringsModel.findOrCreate({
+        where: {
+            userId: id
+        },
+        defaults: {
+            offering: ''
+        }
+    }).then(([offering]) => {
+        res.json(offering.get())
+    })
 })
 
 router.post('/like', passport.authenticate('jwt', {session: false}), (req, res) => {
