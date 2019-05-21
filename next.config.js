@@ -5,6 +5,5 @@ const publicRuntimeConfig = {
 }
 
 module.exports = withSass({
-    publicRuntimeConfig,
-    assetPrefix: 'https://ids-vyas-puja.herokuapp.com'
+    publicRuntimeConfig
 })
