@@ -1,56 +1,48 @@
-import React, { useState } from 'react'
-
+import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { withRouter } from 'next/router'
 import { parseCookies } from 'nookies'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
-import ActiveLink from '../components/activeLink'
 import IdsLine from '../components/ids-line'
-
 import '../styles/header.scss'
 
-const HeaderItem = (props) => (
-    <div className="header-item">
-        <ActiveLink href={props.href}>
-            {props.children}
-        </ActiveLink>
-    </div>
-)
+import getConfig from 'next/config'
+const {publicRuntimeConfig} = getConfig()
+const appUrl = publicRuntimeConfig.API_URL
 
 const Header = (props) => { 
     const { token } = parseCookies()
     const loggedIn = !!token
 
+    // props.router.pathname
     const [navOpen, toggleNav] = useState(false)
+    useEffect(() => toggleNav(false), [props.router.pathname])
 
-    const loggedInNav = () => (
+    return (
         <header className={navOpen ? 'open' : ''}>
             <div className="ids-header">
             <div className="bars"><FontAwesomeIcon icon={faBars} onClick={() => toggleNav(!navOpen)}/></div>
                 {
                     navOpen &&             
                     <div className="links">
-                        <div onClick={() => toggleNav(false)}><HeaderItem href='/'>Home</HeaderItem></div>
-                        <div onClick={() => toggleNav(false)}><HeaderItem href='/myoffering'>My Offering</HeaderItem></div>
-                        {/* <div onClick={() => toggleNav(false)}><HeaderItem href='/profile'>Profile</HeaderItem></div> */}
-                        <div onClick={() => toggleNav(false)}><HeaderItem href='/logout'>Logout</HeaderItem></div>
+                        <div className="header-item"><Link href={`${appUrl}/`}><a>Home</a></Link></div>
+                        {/* <div className="header-item"><Link href='/about'><a>About</a></Link></div> */}
+                        <div className="header-item"><Link href={`${appUrl}/myoffering`}><a>My Offering</a></Link></div>
+                        {/* <div className="header-item"><Link href='/profile'>Profile</Link></div> */}
+                        {loggedIn && 
+                            <div className="header-item"><Link href={`${appUrl}/logout`}><a>Logout</a></Link></div>
+                        }
+                        {!loggedIn && 
+                            <div className="header-item"><Link href={`${appUrl}/login`}><a>Login</a></Link></div>
+                        }
                     </div>
                 }
             </div>
         </header>
     )
-
-    const loggedOutNav = () => {
-        <header>
-        </header>     
-    }
-
-    return (
-        <div>
-            {loggedIn ? loggedInNav() : loggedOutNav()}
-        </div>
-    )
 }
 
-export default Header
+export default withRouter(Header)

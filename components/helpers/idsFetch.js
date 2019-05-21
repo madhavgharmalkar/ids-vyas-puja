@@ -4,10 +4,13 @@ import Router from 'next/router'
 
 const dev = process.env.NODE_ENV !== 'production';
 
+import getConfig from 'next/config'
+const {publicRuntimeConfig} = getConfig()
+const appUrl = publicRuntimeConfig.API_URL
+
 const idsFetch = (context, url, method = 'GET', data) => {
     const { token } = parseCookies(context)
-    const baseUrl = dev ? 'http://localhost:3000' : 'https://ids-vyas-puja.herokuapp.com'
-
+    const baseUrl = appUrl
     
     return fetch(
         `${baseUrl}${url}`, 

@@ -4,6 +4,8 @@ const express = require('express')
 const router = express.Router()
 const passport = require('passport')
 
+const userModel = require('../models/user')
+
 router.post('/create', (req, res) => {
     const data = req.body;
 
@@ -20,7 +22,14 @@ router.post('/create', (req, res) => {
 })
 
 router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res) => {
-    res.json(req.user)
+    userModel.findOne({where: {id: req.user}})
+        .then(user => {
+            userData = user.get()
+            res.json(userData)
+        })
+        .catch(err => {
+            res.sendStatus(400)
+        })
 })
 
 router.post('/profile,', passport.authenticate('jwt', {session: false}), (req, res) => {

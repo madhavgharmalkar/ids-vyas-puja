@@ -1,2 +1,9 @@
 const withSass = require('@zeit/next-sass')
-module.exports = withSass()
+
+const publicRuntimeConfig = {
+    API_URL: process.env.APP_URL
+}
+
+module.exports = withSass({
+    publicRuntimeConfig
+})

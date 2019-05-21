@@ -42,8 +42,7 @@ router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
 
 router.post('/myoffering', passport.authenticate('jwt', {session: false}), (req, res) => {
     const { offering } = req.body
-    const { id } = req.user
-    console.log(id)
+    const id = req.user
 
     offeringsModel.update({
             offering: offering
@@ -57,8 +56,7 @@ router.post('/myoffering', passport.authenticate('jwt', {session: false}), (req,
 })
 
 router.get('/myoffering', passport.authenticate('jwt', {session: false}), (req, res) => {
-    const { id } = req.user
-    console.log(id)
+    const id = req.user
 
     offeringsModel.findOrCreate({
         where: {

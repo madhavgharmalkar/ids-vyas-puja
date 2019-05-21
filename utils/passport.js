@@ -7,8 +7,6 @@ const passportJWT = require("passport-jwt");
 const JWTStrategy   = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
 
-const userModel = require('../models/user')
-
 passport.use(new LocalStrategy({
         usernameField: 'email',
         passwordField: 'password'
@@ -32,16 +30,9 @@ passport.use(new JWTStrategy({
         secretOrKey: 'your_jwt_secret'
     },
     function(jwtPayload, cb) {
-        return userModel.findOne({where: {id: jwtPayload.id}})
-            .then(user => {
-                userData = user.get()
-                return cb(null, userData)
-            })
-            .catch(err => {
-                return cb(err)
-            })
+        return cb(null, jwtPayload.id)
     }
-));
+))
 
 passport.use(new FacebookStrategy({
         clientID: process.env.FACEBOOK_CLIENT_ID,
