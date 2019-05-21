@@ -22,7 +22,7 @@ router.get('/facebook/return',
             userData = user.get()
             const token = jwt.sign(userData, 'your_jwt_secret')
             res.cookie('token', token)
-            return res.redirect('/')
+            return res.redirect('/vyasapuja')
         })
     }
 )
@@ -44,7 +44,7 @@ router.get('/google/return',
             userData = user.get()
             const token = jwt.sign(userData, 'your_jwt_secret')
             res.cookie('token', token)
-            return res.redirect('/')
+            return res.redirect('/vyasapuja')
         })
     }
 )
