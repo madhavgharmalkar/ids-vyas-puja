@@ -13,38 +13,41 @@ header {
         margin: auto;
 
         display: flex;
-        align-items: flex-end;
-        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: row;
+
+        .title {
+            max-width: 50%;
+            font-size: 18px;
+            text-align: left;
+        }
 
         .bars {
             align-self: flex-end;
             cursor: pointer;
-        }
 
-        .links {
-            display: flex;
-            flex-direction: column;
-
-            .header-item {
-                padding: .1em;
-
-                a {
-                    text-decoration: none;
-                    color: $background-color;
-                }
-
-                &:hover {
-                    text-decoration: underline;
+            .links {
+                display: flex;
+                flex-direction: column;
+    
+                .header-item {
+                    padding: .1em;
+    
+                    a {
+                        text-decoration: none;
+                        color: $background-color;
+                    }
+    
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 }
             }
         }
     }
 
-
-
-
     &.open {
-        
         @include ids-gradient-bg;
         background-size: cover;
         background-position: center;

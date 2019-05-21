@@ -24,22 +24,26 @@ const Header = (props) => {
     return (
         <header className={navOpen ? 'open' : ''}>
             <div className="ids-header">
-            <div className="bars"><FontAwesomeIcon icon={faBars} onClick={() => toggleNav(!navOpen)}/></div>
-                {
-                    navOpen &&             
-                    <div className="links">
-                        <div className="header-item"><Link href={`${appUrl}/`}><a>Home</a></Link></div>
-                        {/* <div className="header-item"><Link href='/about'><a>About</a></Link></div> */}
-                        <div className="header-item"><Link href={`${appUrl}/myoffering`}><a>My Offering</a></Link></div>
-                        {/* <div className="header-item"><Link href='/profile'>Profile</Link></div> */}
-                        {loggedIn && 
-                            <div className="header-item"><Link href={`${appUrl}/logout`}><a>Logout</a></Link></div>
-                        }
-                        {!loggedIn && 
-                            <div className="header-item"><Link href={`${appUrl}/login`}><a>Login</a></Link></div>
-                        }
-                    </div>
-                }
+                <div className="title">
+                    Indradyumna Swami Vyasa Puja 2019
+                </div>
+                <div className="bars"><FontAwesomeIcon icon={faBars} onClick={() => toggleNav(!navOpen)}/>
+                    {
+                        navOpen &&             
+                        <div className="links">
+                            <div className="header-item"><Link href={`${appUrl}/`}><a>Home</a></Link></div>
+                            {/* <div className="header-item"><Link href='/about'><a>About</a></Link></div> */}
+                            <div className="header-item"><Link href={`${appUrl}/myoffering`}><a>My Offering</a></Link></div>
+                            {/* <div className="header-item"><Link href='/profile'>Profile</Link></div> */}
+                            {loggedIn && 
+                                <div className="header-item"><Link href={`${appUrl}/logout`}><a>Logout</a></Link></div>
+                            }
+                            {!loggedIn && 
+                                <div className="header-item"><Link href={`${appUrl}/login`}><a>Login</a></Link></div>
+                            }
+                        </div>
+                    }
+                </div>
             </div>
         </header>
     )
