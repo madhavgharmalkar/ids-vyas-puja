@@ -14,11 +14,11 @@ logout.getInitialProps = (ctx) => {
 
     if (res) {
         res.writeHead(302, {
-            Location: '/login'
+            Location: '/vyasapuja/login'
         })
         res.end()
     } else {
-        Router.push('/login')
+        Router.push('/vyasapuja/login')
     }
 
     return {}

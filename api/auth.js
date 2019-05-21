@@ -8,7 +8,7 @@ const userModel = require('../models/user')
 
 router.get('/facebook', passport.authenticate('facebook', { scope: ['email'] }))
 router.get('/facebook/return',
-    passport.authenticate('facebook', { failureRedirect: '/login', session: false }), 
+    passport.authenticate('facebook', { failureRedirect: '/vyasapuja/login', session: false }), 
     (req, res) => {
         const {name, email} = req.user._json         
         userModel.findOrCreate({
@@ -29,7 +29,7 @@ router.get('/facebook/return',
 
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 router.get('/google/return', 
-    passport.authenticate('google', { failureRedirect: '/login', session: false }),
+    passport.authenticate('google', { failureRedirect: '/vyasapuja/login', session: false }),
     (req, res) => {
         const name = req.user.displayName
         const email = req.user.emails[0].value

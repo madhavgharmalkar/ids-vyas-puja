@@ -26,12 +26,12 @@ const idsFetch = (context, url, method = 'GET', data) => {
         if (response.status === 401) {
             if (context && context.res) {
                 context.res.writeHead(302, {
-                    Location: '/login'
+                    Location: '/vyasapuja/login'
                 })
                 context.res.end()
                 return {}
             } else {
-                Router.push('/login')
+                Router.push('/vyasapuja/login')
                 return {}
             }
         }

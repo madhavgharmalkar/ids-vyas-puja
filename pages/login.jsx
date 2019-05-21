@@ -18,11 +18,11 @@ class Login extends Component {
     }
 
     redirectToFBLogin() {
-        Router.push('/api/login/facebook')
+        Router.push('/vyasapuja/api/login/facebook')
     }
 
     redirectToGoogleLogin() {
-        Router.push('/api/login/google')
+        Router.push('/vyasapuja/api/login/google')
     }
 
     render() {
