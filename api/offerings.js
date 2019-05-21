@@ -8,7 +8,7 @@ const Op = Sequelize.Op
 const offeringsModel = require('../models/offering')
 const userModel = require('../models/user')
 
-router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
+router.get('/', (req, res) => {
     const {
         limit = 10,
         offset = 0,  

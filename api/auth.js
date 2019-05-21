@@ -8,7 +8,7 @@ const userModel = require('../models/user')
 
 router.get('/facebook', passport.authenticate('facebook', { scope: ['email'] }))
 router.get('/facebook/return',
-    passport.authenticate('facebook', { failureRedirect: '/vyasapuja/login', session: false }), 
+    passport.authenticate('facebook', { failureRedirect: '/indradyumna-swami-vyasa-puja-2019/login', session: false }), 
     (req, res) => {
         const {name, email} = req.user._json         
         userModel.findOrCreate({
@@ -22,14 +22,14 @@ router.get('/facebook/return',
             userData = user.get()
             const token = jwt.sign(userData, 'your_jwt_secret')
             res.cookie('token', token)
-            return res.redirect('/vyasapuja')
+            return res.redirect('/indradyumna-swami-vyasa-puja-2019')
         })
     }
 )
 
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 router.get('/google/return', 
-    passport.authenticate('google', { failureRedirect: '/vyasapuja/login', session: false }),
+    passport.authenticate('google', { failureRedirect: '/indradyumna-swami-vyasa-puja-2019/login', session: false }),
     (req, res) => {
         const name = req.user.displayName
         const email = req.user.emails[0].value
@@ -44,7 +44,7 @@ router.get('/google/return',
             userData = user.get()
             const token = jwt.sign(userData, 'your_jwt_secret')
             res.cookie('token', token)
-            return res.redirect('/vyasapuja')
+            return res.redirect('/indradyumna-swami-vyasa-puja-2019')
         })
     }
 )

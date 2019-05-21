@@ -14,11 +14,11 @@ logout.getInitialProps = (ctx) => {
 
     if (res) {
         res.writeHead(302, {
-            Location: '/vyasapuja/login'
+            Location: '/indradyumna-swami-vyasa-puja-2019/login'
         })
         res.end()
     } else {
-        Router.push('/vyasapuja/login')
+        Router.push('/indradyumna-swami-vyasa-puja-2019/login')
     }
 
     return {}

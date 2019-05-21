@@ -26,12 +26,12 @@ const idsFetch = (context, url, method = 'GET', data) => {
         if (response.status === 401) {
             if (context && context.res) {
                 context.res.writeHead(302, {
-                    Location: '/vyasapuja/login'
+                    Location: '/indradyumna-swami-vyasa-puja-2019/login'
                 })
                 context.res.end()
                 return {}
             } else {
-                Router.push('/vyasapuja/login')
+                Router.push('/indradyumna-swami-vyasa-puja-2019/login')
                 return {}
             }
         }

@@ -21,13 +21,11 @@ class Feed extends Component {
     static async getInitialProps(ctx) {
         const now = new Date().getTime()
 
-        const [userData, offerings] = await Promise.all([
-            idsFetch(ctx, '/api/user/profile'),
+        const [offerings] = await Promise.all([
             idsFetch(ctx, `/api/offerings?now=${now}`)
         ])
 
         return {
-            userData,
             offerings,
             now
         }
@@ -56,7 +54,6 @@ class Feed extends Component {
                 <Head>
                     <title>IDS Vyasa Puja | Welcome</title>
                 </Head>
-                <h1 className="welcome">{`Welcome ${this.props.userData.name}!`}</h1>
                 <IdsLine></IdsLine>
                 <div className="feed">
                     <InfiniteScroll

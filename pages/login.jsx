@@ -18,11 +18,11 @@ class Login extends Component {
     }
 
     redirectToFBLogin() {
-        Router.push('/vyasapuja/api/login/facebook')
+        Router.push('/indradyumna-swami-vyasa-puja-2019/api/login/facebook')
     }
 
     redirectToGoogleLogin() {
-        Router.push('/vyasapuja/api/login/google')
+        Router.push('/indradyumna-swami-vyasa-puja-2019/api/login/google')
     }
 
     render() {
