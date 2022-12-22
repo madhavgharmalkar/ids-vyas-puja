@@ -11,7 +11,7 @@
     "express": "^4.16.4",
     "include-media": "^1.4.9",
     "isomorphic-unfetch": "^3.0.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "moment": "^2.24.0",
     "next": "^8.0.3",
     "node-sass": "^4.11.0",
